@@ -1,0 +1,8 @@
+# Copyright (c) 2021 Valdimar Bjorn Asgeirsson
+# SPDX-License-Identifier: MIT
+
+config SHIELD_AURYL_LEFT
+    def_bool $(shields_list_contains,auryl_left)
+
+config SHIELD_AURYL_RIGHT
+    def_bool $(shields_list_contains,auryl_right)
