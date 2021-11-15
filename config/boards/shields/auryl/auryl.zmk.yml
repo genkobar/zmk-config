@@ -1,0 +1,13 @@
+file_format: "1"
+id: auryl
+name: Auryl
+type: shield
+url: https://github.com/genkobar/auryl/
+requires: [pro_micro]
+features:
+  - keys
+  - encoder
+  - pointer
+siblings:
+  - auryl_left
+  - auryl_right
