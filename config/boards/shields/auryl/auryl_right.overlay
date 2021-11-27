@@ -17,16 +17,12 @@
         ;
 };
 
-&right_encoder {    
-  status = "okay";
-};
-
-&i2c1 {
+&pro_micro_i2c {
 	status = "okay";
 
-	pim447_trackball@a {
-		compatible = "pimoroni,pim447_trackball";
+	trackball_pim447@a {
+		compatible = "pimoroni,trackball_pim447";
 		reg = <0xa>;
-		label = "PIM447_TRACKBALL";
+		label = "TRACKBALL_PIM447";
 	};
 };
