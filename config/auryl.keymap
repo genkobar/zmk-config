@@ -38,7 +38,7 @@
         &kp LGUI &kp LGUI &kp LGUI &kp SPACE &kp SPACE   &kp RET &kp SPACE &kp RALT &kp LGUI &kp LGUI
                           &kp LGUI &kp SPACE &kp SPACE   &kp SPACE &kp RALT
                         >;
-                        // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
                 };
         };
 };
