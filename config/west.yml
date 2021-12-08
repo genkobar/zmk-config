@@ -4,12 +4,12 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: genkobar
       url-base: https://github.com/genkobar
-    # - name: cdc
-    #   url-base: https://github.com/cdc-mkb
+    - name: cdc
+      url-base: https://github.com/cdc-mkb
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: cdc
+      revision: mouse-pim447
       import: app/west.yml
   self:
     path: config
