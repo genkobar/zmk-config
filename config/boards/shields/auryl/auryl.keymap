@@ -39,7 +39,7 @@
                                    &kp LGUI &kp SPACE &kp BSPC       &kp TAB &kp ENTER &kp GRAVE 
                                    &kp N &kp H &kp LALT                  &mt LCTRL ESC &kp RSHFT
                         >;
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                        // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
                 };
         };
 };
