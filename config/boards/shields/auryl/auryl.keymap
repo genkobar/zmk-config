@@ -13,94 +13,84 @@
 #define HALMAK 1
 #define LOWER 2
 #define RAISE 3
-
-/* from QMK genkactyl
-[_QWERTY] = LAYOUT( \
-    KC_TAB,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,    KC_LBRC,   \
-    LCTL_ESC, KC_A,   KC_S,   KC_D,   KC_F,   KC_G,               KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN, KC_QUOT,   \
-    KC_LSFT,  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH, KC_BSLASH, \
-    OSFUNC,  HYPER, KC_LBRC,KC_RBRC,                                              HYPER, KC_EQL, KC_MINS, OSFUNC,   \
-                            KC_LGUI, KC_SPC, KC_BSPC,        KC_TAB, KC_ENT, LCTL_ESC,                                 \
-                            NUMSYM, LCTL_ESC, KC_LALT,         KC_GRV, KC_RALT, KC_RSFT                                  \
-),
-*/
-
-
-// HYPER: LC(LA(LCMD))
-// CT_ESC: &mt LCTRL ESC
-
+// #define CT_ESC LCTRL ESC
+// #define HYPER LC(LA(LCMD))
+// #define FF_LEFT &kp LCMD(LA(LEFT))
+// #define FF_RIGHT &kp LCMD(LA(RIGHT))
+// #define FF_L FF_LEFT
+// #define FF_R FF_RIGHT
 
 / {
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
-// -----------------------------------------------------------------------------------------------------
-// | OSFN |  Q  |  W  |  E  |  R   |  T   |                |  Y  |  U   |  I  |  O  |  P  |  [  |
-// | LESC |  A  |  S  |  D  |  F   |  G   |                |  H  |  J   |  K  |  L  |  ;  |  '  |
-// | SHFT |  Z  |  X  |  C  |  V   |  B   |                |  N  |  M   |  ,  |  .  |  /  |  \  |
-//              |  [  |  ]  | GUI  | SPC  | BSPC |   | TAB | ENT | LESC |  -  |  =  |
-//                          | NSYM | LESC | LALT |         | GRV | SFT  |
+// KC_TAB,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,    K
+//     LCTL_ESC, KC_A,   KC_S,   KC_D,   KC_F,   KC_G,               KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN, KC_QUOT,   \
+//     KC_LSFT,  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH, KC_BSLASH, \
+//     OSFUNC,  HYPER, KC_LBRC,KC_RBRC,                                              HYPER, KC_EQL, KC_MINS, OSFUNC,   \
+//                             KC_LGUI, KC_SPC, KC_BSPC,        KC_TAB, KC_ENT, LCTL_ESC,                                 \
+//                             NUMSYM, LCTL_ESC, KC_LALT,         KC_GRV, KC_RALT, KC_RSFT
                         bindings = <
-   &mo RAISE    &kp Q &kp W &kp E &kp R &kp T                                   &kp Y &kp U  &kp I     &kp O   &kp P    &kp LBKT
-   &mt LCTRL ESC &kp A &kp S &kp D &kp F &kp G                                   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT     &kp Z &kp X &kp C &kp V &kp B                                   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp BSLH
-                 &kp LBKT &kp RBKT          &kp ENTER                   &kp C_MUTE            &kp MINUS &kp EQUAL
-                             &kp LCMD &kp SPACE &kp BSPC       &kp TAB &kp ENTER &kp GRAVE 
-                             &mo LOWER &kp LC(LA(LCMD)) &kp LALT            &mt LCTRL ESC &kp RSHFT
+   &kp TAB  &kp Q &kp W &kp E &kp R &kp T                                 &kp Y &kp U  &kp I     &kp O   &kp P    &kp LBKT
+   &mt LCTRL ESC &kp A &kp S &kp D &kp F &kp G                            &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT  &kp Z &kp X &kp C &kp V &kp B                               &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp BSLH
+                 &kp LBKT &kp RBKT          &kp ENTER                 &kp C_MUTE         &kp MINUS &kp EQUAL
+                             &kp LCMD  &kp SPACE &kp BSPC             &kp TAB &kp ENTER &kp GRAVE 
+                             &mo LOWER &kp LC(LA(LCMD)) &kp LALT             &mt CT_ESC &mo RAISE
                         >;
                         // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
                 };
 
-                halmak_layer {
-//     _______, KC_W,  KC_L,   KC_R,   KC_B,   KC_Z,                  KC_SCLN,   KC_Q,   KC_U,   KC_D,   KC_J,  _______,   \
-//     _______, KC_S,  KC_H,   KC_N,   KC_T,   KC_COMM,               KC_DOT,   KC_A,   KC_E,   KC_O,   KC_I, _______,   \
-//     _______, KC_F,  KC_M,   KC_V,   KC_C,   KC_SLSH,               KC_G,   KC_P,    KC_X,   KC_K,   KC_Y,_______, \
-//     _______,_______,_______,_______,                                             _______,_______,_______,_______,  \
-//                             _______,_______,_______,            _______,_______,_______,                           \
-//                             _______,_______,_______,            _______,_______,_______ 
-                        bindings = <
-   &trans     &kp W &kp L &kp R &kp B &kp Z                               &kp SEMI &kp Q  &kp U &kp D &kp J &trans
-   &trans     &kp S &kp H &kp N &kp T &kp COMM                             &kp DOT &kp A  &kp E &kp O &kp I &trans
-   &trans     &kp F &kp M &kp V &kp C &kp FSLH                               &kp G &kp P  &kp X &kp K &kp Y &trans
-                   &trans &trans      &trans                              &trans           &trans    &trans      
-                                &trans &trans &trans              &trans &trans &trans      
-                                &trans &trans &trans                     &trans &trans      
-                        >;
-                };
+//                 halmak_layer {
+// //     _______, KC_W,  KC_L,   KC_R,   KC_B,   KC_Z,                  KC_SCLN,   KC_Q,   KC_U,   KC_D,   KC_J,  _______,   \
+// //     _______, KC_S,  KC_H,   KC_N,   KC_T,   KC_COMM,               KC_DOT,   KC_A,   KC_E,   KC_O,   KC_I, _______,   \
+// //     _______, KC_F,  KC_M,   KC_V,   KC_C,   KC_SLSH,               KC_G,   KC_P,    KC_X,   KC_K,   KC_Y,_______, \
+// //     _______,_______,_______,_______,                                             _______,_______,_______,_______,  \
+// //                             _______,_______,_______,            _______,_______,_______,                           \
+// //                             _______,_______,_______,            _______,_______,_______ 
+//                         bindings = <
+//    &trans     &kp W &kp L &kp R &kp B &kp Z                               &kp SEMI &kp Q  &kp U &kp D &kp J &trans
+//    &trans     &kp S &kp H &kp N &kp T &kp COMM                             &kp DOT &kp A  &kp E &kp O &kp I &trans
+//    &trans     &kp F &kp M &kp V &kp C &kp FSLH                               &kp G &kp P  &kp X &kp K &kp Y &trans
+//                    &trans &trans      &trans                              &trans           &trans    &trans      
+//                                 &trans &trans &trans              &trans &trans &trans      
+//                                 &trans &trans &trans                     &trans &trans      
+//                         >;
+//                 };
 
-                lower_layer {
-//     RESET,  _______, S(KC_7), S(KC_8),  S(KC_9), S(KC_LBRC),      S(KC_RBRC), KC_P7, KC_P8,  KC_P9, KC_PLUS, KC_HOME,   \
-//     _______,_______, S(KC_4), S(KC_5),  S(KC_6), KC_LPRN,            KC_RPRN, KC_P4, KC_P5,  KC_P6, KC_MINS, KC_END,   \
-//     KC_PSCR,_______, S(KC_1), S(KC_2),  S(KC_3), KC_LBRC,            KC_RBRC, KC_P1, KC_P2,  KC_P3, KC_EQL,  KC_PGUP,   \
-//     _______,_______,_______, S(KC_0),                                                KC_P0,KC_PIPE, KC_UNDS, KC_PGDN,     \
-//                             _______,_______,_______,            _______,_______,_______,                           \
-//                             _______,_______,_______,            _______,_______,_______   
-                        bindings = <
-   &kp C_RESET &trans &kp LS(N7) &kp LS(N8) &kp LS(N9) &kp LBRC                         &kp LBRC &kp N7 &kp N8 &kp N9 &kp PG_UP &kp HOME
-   &trans      &trans &kp LS(N4) &kp LS(N5) &kp LS(N6) &kp LPAR                         &kp LPAR &kp N4 &kp N5 &kp N6 &kp PG_DN &kp END
-   &kp PSCRN   &trans &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LBKT                         &kp LBKT &kp N1 &kp N2 &kp N3 &kp UNDER &kp EQUAL
-                      &trans     &kp LS(N0)              &trans                    &trans        &kp N0 &kp PIPE
-                                &trans &trans &trans              &trans &trans &trans      
-                                &trans &trans &trans                     &trans &trans      
-                        >;
-                };
+//                 lower_layer {
+// //     RESET,  _______, S(KC_7), S(KC_8),  S(KC_9), S(KC_LBRC),      S(KC_RBRC), KC_P7, KC_P8,  KC_P9, KC_PLUS, KC_HOME,   \
+// //     _______,_______, S(KC_4), S(KC_5),  S(KC_6), KC_LPRN,            KC_RPRN, KC_P4, KC_P5,  KC_P6, KC_MINS, KC_END,   \
+// //     KC_PSCR,_______, S(KC_1), S(KC_2),  S(KC_3), KC_LBRC,            KC_RBRC, KC_P1, KC_P2,  KC_P3, KC_EQL,  KC_PGUP,   \
+// //     _______,_______,_______, S(KC_0),                                                KC_P0,KC_PIPE, KC_UNDS, KC_PGDN,     \
+// //                             _______,_______,_______,            _______,_______,_______,                           \
+// //                             _______,_______,_______,            _______,_______,_______   
+//                         bindings = <
+//    &kp C_RESET &trans &kp LS(N7) &kp LS(N8) &kp LS(N9) &kp LBRC                         &kp LBRC &kp N7 &kp N8 &kp N9 &kp PG_UP &kp HOME
+//    &trans      &trans &kp LS(N4) &kp LS(N5) &kp LS(N6) &kp LPAR                         &kp LPAR &kp N4 &kp N5 &kp N6 &kp PG_DN &kp END
+//    &kp PSCRN   &trans &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LBKT                         &kp LBKT &kp N1 &kp N2 &kp N3 &kp UNDER &kp EQUAL
+//                       &trans     &kp LS(N0)              &trans                    &trans        &kp N0 &kp PIPE
+//                                 &trans &trans &trans              &trans &trans &trans      
+//                                 &trans &trans &trans                     &trans &trans      
+//                         >;
+//                 };
 
-                raise_layer {
-//     KC_PAUS,RESET,  KC_F1, KC_F2,  KC_F3,  KC_F4,             FF_LEFT, FF_RIGHT, KC_NLCK,KC_INS, _______,KC_VOLU,   \
-//     KC_SLCK,_______,KC_F5, KC_F6,  KC_F7,  KC_F8,             KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT,_______,KC_VOLD,   \
-//     _______,_______,KC_F9, KC_F10, KC_F11, KC_F12,            KC_ML,   KC_MD,    KC_MU,  KC_MR, _______,KC_MUTE,   \
-//     _______,_______,_______,HALMAK,                                              KC_MPRV,KC_MPLY,KC_MNXT,_______,\
-//                             _______,KC_MB1,KC_MB3,          KC_MB4,KC_MB2,_______,                           \
-//                             _______,_______,_______,        KC_ACL0,KC_ACL1,KC_ACL2                           
-                        bindings = <
-   &trans      &trans &kp F1 &kp F2 &kp F3 &kp F4               &kp LCMD(LA(LEFT)) &kp LCMD(LA(RIGHT)) &kp KC_NUM &kp INS &trans &kp C_VOL_UP
-   &trans      &trans &kp F5 &kp F6 &kp F7 &kp F8                         &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &kp C_VOL_DN
-   &kp PSCRN   &trans &kp F9 &kp F10 &kp F11 &kp F12                         &trans &trans &trans &trans &trans &kp C_MUTE
-                      &trans  &tog HALMAK              &trans                    &trans        &kp N0 &kp PIPE
-                                &trans &trans &trans                           &trans &trans &trans      
-                            &kp C_PREV &kp C_PP &kp C_NEXT                     &trans &trans      
-                        >;
-                };
+//                 raise_layer {
+// //     KC_PAUS,RESET,  KC_F1, KC_F2,  KC_F3,  KC_F4,             FF_LEFT, FF_RIGHT, KC_NLCK,KC_INS, _______,KC_VOLU,   \
+// //     KC_SLCK,_______,KC_F5, KC_F6,  KC_F7,  KC_F8,             KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT,_______,KC_VOLD,   \
+// //     _______,_______,KC_F9, KC_F10, KC_F11, KC_F12,            KC_ML,   KC_MD,    KC_MU,  KC_MR, _______,KC_MUTE,   \
+// //     _______,_______,_______,HALMAK,                                              KC_MPRV,KC_MPLY,KC_MNXT,_______,\
+// //                             _______,KC_MB1,KC_MB3,          KC_MB4,KC_MB2,_______,                           \
+// //                             _______,_______,_______,        KC_ACL0,KC_ACL1,KC_ACL2                           
+//                         bindings = <
+//    &trans    &trans &kp F1 &kp F2  &kp F3  &kp F4                  &kp FF_L &kp FF_R &kp KC_NUM &kp INS   &trans &kp C_VOL_UP
+//    &trans    &trans &kp F5 &kp F6  &kp F7  &kp F8                  &kp LEFT &kp DOWN &kp UP     &kp RIGHT &trans &kp C_VOL_DN
+//    &kp PSCRN &trans &kp F9 &kp F10 &kp F11 &kp F12                 &trans   &trans   &trans     &trans    &trans &kp C_MUTE
+//                     &trans  &tog HALMAK        &trans            &trans        &trans &trans
+//                                 &trans &trans &trans                           &trans &trans &trans      
+//                                 &kp C_PREV &kp C_PP &kp C_NEXT                        &trans &trans      
+//                         >;
+//                 };
         };
 };
