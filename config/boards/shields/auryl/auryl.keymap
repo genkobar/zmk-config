@@ -20,6 +20,8 @@
 ),
 */
 
+#define DEFAULT 0
+#define LOWER 1
 #define CT_ESC LCTRL ESC
 #define HYPER LC(LA(LCMD))
 
@@ -40,9 +42,26 @@
    &kp LSHFT  &kp Z &kp X &kp C &kp V &kp B                                 &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp BSLH
                  &kp LBKT &kp RBKT          &kp ENTER                 &kp C_MUTE         &kp MINUS &kp EQUAL
                              &kp LCMD  &kp SPACE &kp BSPC     &kp TAB &kp ENTER &kp GRAVE 
-                             &kp SPACE &kp HYPER &kp LALT             &mt CT_ESC &kp SPACE 
+                             &mo LOWER &kp HYPER &kp LALT             &mt CT_ESC &kp SPACE 
                         >;
                         // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                };
+
+                lower_layer {
+//     RESET,  _______, S(KC_7), S(KC_8),  S(KC_9), S(KC_LBRC),      S(KC_RBRC), KC_P7, KC_P8,  KC_P9, KC_PLUS, KC_HOME,   \
+//     _______,_______, S(KC_4), S(KC_5),  S(KC_6), KC_LPRN,            KC_RPRN, KC_P4, KC_P5,  KC_P6, KC_MINS, KC_END,   \
+//     KC_PSCR,_______, S(KC_1), S(KC_2),  S(KC_3), KC_LBRC,            KC_RBRC, KC_P1, KC_P2,  KC_P3, KC_EQL,  KC_PGUP,   \
+//     _______,_______,_______, S(KC_0),                                                KC_P0,KC_PIPE, KC_UNDS, KC_PGDN,     \
+//                             _______,_______,_______,            _______,_______,_______,                           \
+//                             _______,_______,_______,            _______,_______,_______   
+                        bindings = <
+   &kp C_RESET &trans &kp LS(N7) &kp LS(N8) &kp LS(N9) &kp LBRC                         &kp LBRC &kp N7 &kp N8 &kp N9 &kp PG_UP &kp HOME
+   &trans      &trans &kp LS(N4) &kp LS(N5) &kp LS(N6) &kp LPAR                         &kp LPAR &kp N4 &kp N5 &kp N6 &kp PG_DN &kp END
+   &kp PSCRN   &trans &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LBKT                         &kp LBKT &kp N1 &kp N2 &kp N3 &kp UNDER &kp EQUAL
+                      &trans     &kp LS(N0)              &trans                    &trans        &kp N0 &kp PIPE
+                                &trans &trans &trans              &trans &trans &trans      
+                                &trans &trans &trans                     &trans &trans      
+                        >;
                 };
         };
 };
