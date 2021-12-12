@@ -1,8 +1,9 @@
 # Copyright (c) 2021 Valdimar Bjorn Asgeirsson
 # SPDX-License-Identifier: MIT
 
-# The right side has the Pimoroni trackball, so it must be the central side
-if SHIELD_AURYL_RIGHT
+## The right side has the Pimoroni trackball, so it must be the central side
+# if SHIELD_AURYL_RIGHT
+if SHIELD_AURYL_LEFT
 
 config ZMK_KEYBOARD_NAME
 	default "Auryl"
