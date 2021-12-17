@@ -8,8 +8,8 @@ manifest:
       url-base: https://github.com/cdc-mkb
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: a8c7cf4f19ad80eb8e6148f872d3a9584b25befc
+      remote: cdc
+      revision: mouse-pim447
       import: app/west.yml
   self:
     path: config
