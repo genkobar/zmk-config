@@ -6,9 +6,11 @@ manifest:
       url-base: https://github.com/genkobar
     - name: cdc
       url-base: https://github.com/cdc-mkb
+    - name: w84miracle
+      url-base: https://github.com/w84miracle
   projects:
     - name: zmk
-      remote: cdc
+      remote: w84miracle
       revision: mouse-pim447
       import: app/west.yml
   self:
