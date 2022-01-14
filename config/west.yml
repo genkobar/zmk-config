@@ -8,10 +8,12 @@ manifest:
       url-base: https://github.com/cdc-mkb
     - name: w84miracle
       url-base: https://github.com/w84miracle
+    - name: genkobar
+      url-base: https://github.com/genkobar
   projects:
     - name: zmk
-      remote: w84miracle
-      revision: mouse-pim447
+      remote: genkobar
+      revision: split-encoder
       import: app/west.yml
   self:
     path: config
